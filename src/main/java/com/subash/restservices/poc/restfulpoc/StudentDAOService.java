@@ -2,6 +2,7 @@ package com.subash.restservices.poc.restfulpoc;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -42,5 +43,17 @@ public class StudentDAOService {
 		
 		students.add(student);
 		return student;
+	}
+	
+	public Student deleteById(int id) {
+		Iterator<Student> iterator = students.iterator();
+		while(iterator.hasNext()) {
+			Student student = iterator.next();
+			if(student.getId()==id) {
+				iterator.remove();
+				return student;
+			}
+		}
+		return null;
 	}
 }
