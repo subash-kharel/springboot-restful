@@ -27,6 +27,8 @@ public class StudentDAOService {
 		for(Student student:students) {
 			if(student.getId() == id) {
 				return student;
+			}else {
+				throw new UserNotFoundException("User with id "+id + " "+ "not found" );
 			}
 		}
 		return null;
