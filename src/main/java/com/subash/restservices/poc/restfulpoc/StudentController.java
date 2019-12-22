@@ -3,6 +3,8 @@ package com.subash.restservices.poc.restfulpoc;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +35,7 @@ public class StudentController {
 	}
 	
 	@PostMapping("/saveStudent")
-	public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
+	public ResponseEntity<Student> saveStudent(@Valid @RequestBody Student student) {
 		Student savedStudent =studentDAOService.saveStudent(student);
 		
 		//this creates an uri location to the saved Student
