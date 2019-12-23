@@ -5,6 +5,9 @@ import java.util.Date;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -15,6 +18,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//another way to ignore private and sensitive fields as the part of response
+//@JsonIgnoreProperties(value = {"dob"})
 public class Student {
 	
 	private Integer Id;
@@ -23,6 +28,8 @@ public class Student {
 	private String name;
 	@Past
 	@ApiModelProperty(notes =" birthdate should be before todays date")
+	//add json ignore if you dont want this as the part of the response
+	@JsonIgnore
 	private Date dob;
 
 }
